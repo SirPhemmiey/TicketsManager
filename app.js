@@ -4,6 +4,7 @@ import favicon from 'serve-favicon';
 import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
+import exphbs from 'express-handlebars';
 import bodyParser from 'body-parser';
 import passport from 'passport';
 import expressValidator from 'express-validator';
@@ -16,6 +17,8 @@ const upload = multer({dest: './uploads'})
 const User = require('./models/user')
 const appRouter = require('./routes/index');
 import Test from './models/test';
+const configDB = require('./config/database');
+const configPassport = require('./config/passport');
 
 const app = express();
 
@@ -26,13 +29,18 @@ app.use(flash());
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json());
 
-//parse cookie parser
+//parse cookie parser //read every cookie (needed to auth)
 app.use(cookieParser());
 
+// set view engine to Handlebars
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views')) // this is the folder where we keep our ejs files
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+
 // view engine setup
-app.engine('html', require('express-ejs-extend'));
-//app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'html');
+// app.set('view engine', 'html');
+// app.set('views', path.join(__dirname, 'views'));
+// app.engine('html', require('express-ejs-extend'));
 
 //serves up the static files in the public folder. Basically where you put your assets (img, js, css)
 app.use(express.static(path.join(__dirname, 'public')));
@@ -58,7 +66,8 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
-// app.use(passport.initialize);
+app.use(passport.initialize());
+app.use(passport.session()); //persistent login sessions
 // app.use(passport.session());
 // passport.serializeUser(User.serializeUser());
 // passport.deserializeUser(User.deserializeUser());
@@ -95,19 +104,22 @@ function saveData() {
 
 }
 app.listen(port, () => {
-  mongoose.Promise = global.Promise;
-  //connect to mongoDB
-  mongoose.connect("mongodb://localhost:27017/tickets", () => {
-  console.log('Connected to the database');
+  // mongoose.Promise = global.Promise;
+  // //connect to mongoDB
+  // mongoose.connect("mongodb://localhost:27017/tickets", () => {
+  // console.log('Connected to the database');
   //saveData();
+  mongoose.connect(configDB.url);
+  mongoose.Promise = global.Promise; //Tell mongoose to use ES6 promises
+  let db = mongoose.connection;
+ 
+    db.on('error', function(err){
+  console.log('connection error', err);
+  });
+ 
+  db.once('open', function(){
+  console.log('Connection to DB successful');
 });
-// const db = mongoose.connection;
-// mongoose.Promise = global.Promise; //Tell mongoose to use ES6 promises
-// //handle mongo error
-// db.on('error', console.error('Could not connect to the database'));
-// db.once('open', () => {
-//   console.log('connected to the database');
-// })
 })
 
 // error handler

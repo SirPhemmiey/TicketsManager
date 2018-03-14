@@ -23,9 +23,11 @@ router.post('/editTicket', tickets.editTicket);
 router.get('/close', tickets.close);
 router.post('/closeTicket', tickets.closeTicket);
 
-//user auth routes
-router.get('/login', users.enterLogin);
-router.post('/auth', users.userAuth);
+//user routes
+router.get('/users/login', users.enterLogin);
+//router.get('/admin/login', admin.enterLogin);
+router.get('/users/register', users.enterRegister);
+router.post('/users/auth', users.auth);
 router.get('/logout', users.logout);
 router.get('/forgot', users.forgot);
 router.get('/reset', users.reset);

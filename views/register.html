@@ -1,40 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-    <%- include('temp/header.html') -%>
-<body>
-        <%- include('temp/main.html') -%>
-    <h2 class="page-header">Register</h2>
-    <p>Please register using this form</p>
-    <% if (errors) { Array.from(errors).forEach(function(error){%>
-        <div class="alert alert-danger"><%= error.msg %></div>
-    <% })} %>
-    <form action="/users/register" method="post" enctype="multipart/form-data">
-    <div class="form-group">
-        <label for="">Name</label>
-        <input type="text" name="name" class="form-control" placeholder="Enter your name" id="">
-    </div>
-    <div class="form-group">
-            <label for="">Email</label>
-            <input type="email" name="email" class="form-control" placeholder="Enter your email" id="">
-        </div>
-        <div class="form-group">
-                <label for="">Username</label>
-                <input type="text" name="username" class="form-control" placeholder="Enter your username" id="">
-            </div>
-            <div class="form-group">
-                    <label for="">Password</label>
-                    <input type="password" name="password" class="form-control" placeholder="Enter your password" id="">
+
+<%- extend('partials/index') %>
+
+<div class="page login-page">
+        <div class="container">
+          <div class="form-outer text-center d-flex align-items-center">
+            <div class="form-inner">
+              <div class="logo text-uppercase"><span>Dash</span><strong class="text-primary">Express</strong></div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+              <form id="register-form" method="post" action="">
+                <div class="form-group">
+                        <label for="register-firstname" class="label-custom">First Name</label>
+                        <input id="register-firstname" type="text" name="first_name" required>
+                        </div>
+                        A combined team of security operatives wednesday prevented members of the Shiite group from their annual procession of Maulud in Katsina State
+                <div class="form-group">
+                        <label for="register-lastname" class="label-custom">Last Name</label>
+                        <input id="register-lastname" type="text" name="last_name" required>
+                        </div>
+                <div class="form-group">
+                  <label for="register-username" class="label-custom">User Name</label>
+                  <input id="register-username" type="text" name="username" required>
                 </div>
                 <div class="form-group">
-                        <label for="">Confirm Password</label>
-                        <input type="password" name="password2" class="form-control" placeholder="Confirm your password" id="">
-                    </div>
-                    <div class="form-group">
-                            <label for="">Image</label>
-                            <input type="file" name="profileimage" class="form-control" id="">
-                        </div>
-                        <input type="submit" class="btn btn-primary" value="Register">
-    </form>
-    <%- include('temp/footer.html') -%>
-</body>
-</html>
+                  <label for="register-email" class="label-custom">Email Address      </label>
+                  <input id="register-email" type="email" name="email" required>
+                </div>
+                <div class="form-group">
+                  <label for="register-passowrd" class="label-custom">password        </label>
+                  <input id="register-passowrd" type="password" name="password" required>
+                </div>
+                <div class="terms-conditions d-flex justify-content-center">
+                  <input id="license" type="checkbox" class="form-control-custom">
+                  <label for="license">Agree the terms and policy</label>
+                </div>
+                <input id="register" type="submit" value="Register" class="btn btn-primary">
+              </form>
+              <small>Already have an account? </small>
+              <a href="login" class="signup">Login</a>
+            </div>
+            <div class="copyrights text-center">
+              <p>Design by <a href="https://bootstrapious.com" class="external">Bootstrapious</a></p>
+              <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+            </div>
+          </div>
+        </div>
+      </div>

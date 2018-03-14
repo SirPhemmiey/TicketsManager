@@ -3,9 +3,6 @@ const Ticket = require('../models/tickets');
 //const app = require('../app');
 
 export default class TicketsController {
-    index(req, res) {
-        res.render('index');
-    }
     seeAll(req, res) {
 
     }
