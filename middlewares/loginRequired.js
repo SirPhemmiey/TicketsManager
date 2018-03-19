@@ -10,12 +10,16 @@
 // export default loginRequired;
 
 
-const loginRequired = (res, res, next) => {
+const loginRequired = (req, res, next) => {
     //if user is authenticated in the session, carry on
     if (req.isAuthenticated()) {
         return next()
     }
 
     //if they are not
-    res.redirect('/login', {message: "Please login to continue"});
+    //res.redirect.status(200).('/login', {message: "Please login to continue"});
+    res.status(200).render('login', {message: 'Please login to continue', layout: 'index'});
 }
+
+//export default loginRequired;
+module.exports = loginRequired;
