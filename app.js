@@ -7,8 +7,10 @@ import session from 'express-session';
 import exphbs from 'express-handlebars';
 import bodyParser from 'body-parser';
 import passport from 'passport';
+//const passport = require('passport');
 import expressValidator from 'express-validator';
-import localStrategy from 'passport-local';
+import LocalStrategy from 'passport-local';
+//const LocalStrategy = require('passport-local').Strategy;
 import passportLocalMongoose from 'passport-local-mongoose';
 import multer from 'multer';
 import mongoose from 'mongoose';
@@ -33,9 +35,13 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 // set view engine to Handlebars
-app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'views')) // this is the folder where we keep our ejs files
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+// app.set('view engine', 'hbs');
+// 
+// app.engine('handlebars', exphbs({defaultLayout: 'main', layoutsDir: 'views/layouts', partialsDir: 'views/layouts'}));
+
+app.engine('.hbs', exphbs({extname: '.hbs'}));
+app.set('views', path.join(__dirname, 'views')) // this is the folder where we keep our hbs files
+app.set('view engine', '.hbs');
 
 // view engine setup
 // app.set('view engine', 'html');
@@ -66,9 +72,9 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
-app.use(passport.initialize());
-app.use(passport.session()); //persistent login sessions
-// app.use(passport.session());
+ app.use(passport.initialize());
+// app.use(passport.session()); //persistent login sessions
+ app.use(passport.session());
 // passport.serializeUser(User.serializeUser());
 // passport.deserializeUser(User.deserializeUser());
 // passport.use(new localStrategy(User.authenticate()));
@@ -78,6 +84,11 @@ app.use(passport.session()); //persistent login sessions
 //   res.locals.messages = require('express-messages')(req, res);
 //   next();
 // });
+
+//passport configuration
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 
 //routing with all callback functions
