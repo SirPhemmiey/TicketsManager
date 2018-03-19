@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="favicon.ico">
+
+  <title>Spark ― Admin Theme</title>
+
+  <!-- Loading bar -->
+  <script src="/js/pace.min.js"></script>
+
+  <!-- External fonts -->
+  <!-- <link href="http://brick.a.ssl.fastly.net/Montserrat:300,400,500,600,700" rel="stylesheet"> -->
+
+  <!-- NPM Packages -->
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/ionicons.min.css" rel="stylesheet">
+  <link href="/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/css/md-snackbars.min.css" rel="stylesheet">
+
+  <!-- Vendor -->
+  <link href="/css/datatables.min.css" rel="stylesheet">
+
+  <!-- Theme -->
+  <link href="/css/spark.css" rel="stylesheet">
+
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body class=""> <!-- right-to-left -->
+  <div id="wrapper">
+    <nav class="navbar navbar-spark nav-primary">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="sidebar-open visible-xs visible-sm">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand hidden-xs hidden-sm" href="#">
+            <i class="ion ion-ios-pulse-strong" aria-hidden="true"></i>
+          </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown active">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><i class="ion ion-person"></i> View Profile</a></li>
+                <li><a href="#"><i class="ion ion-chatbubbles"></i> Contacts</a></li>
+                <li><a href="#"><i class="ion ion-email"></i> Mailbox</a></li>
+                <li><a href="#"><i class="ion ion-gear-b"></i> Settings</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#"><i class="ion ion-log-out"></i> Sign out</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Messages <span class="caret"></span></a>
+              <div class="dropdown-menu dropdown-md">
+
+                <div class="media-items">
+                  <div class="media">
+                    <div class="media-left">
+                      <a href="#">
+                        <img class="media-object img-circle" src="assets/img/avatar-500x500.png" width="38" height="38">
+                      </a>
+                    </div>
+                    <div class="media-body text-muted">
+                      <p class="media-heading">Linda Miller</p>
+                      <span class="text-sm">Aenean posuere, tortor sed..</span>
+                    </div>
+                  </div>
+
+                  <div class="media">
+                    <div class="media-left">
+                      <a href="#">
+                        <img class="media-object img-circle" src="assets/img/avatar-500x500-2.png" width="38" height="38">
+                      </a>
+                    </div>
+                    <div class="media-body text-muted">
+                      <p class="media-heading">Kathie Burton</p>
+                      <span class="text-sm">Nam pretium turpis et arcu..</span>
+                    </div>
+                  </div>
+
+                  <div class="media">
+                    <div class="media-left">
+                      <a href="#">
+                        <img class="media-object img-circle" src="assets/img/avatar-500x500.png" width="38" height="38">
+                      </a>
+                    </div>
+                    <div class="media-body text-muted">
+                      <p class="media-heading">Linda Miller</p>
+                      <span class="text-sm">Aenean posuere, tortor sed..</span>
+                    </div>
+                  </div>
+
+                  <div class="media">
+                    <div class="media-left">
+                      <a href="#">
+                        <img class="media-object img-circle" src="assets/img/avatar-500x500-2.png" width="38" height="38">
+                      </a>
+                    </div>
+                    <div class="media-body text-muted">
+                      <p class="media-heading">Kathie Burton</p>
+                      <span class="text-sm">Nam pretium turpis et arcu..</span>
+                    </div>
+                  </div>
+                </div>
+
+                <a class="dropdown-menu-footer" href="#">
+                  View all
+                </a>
+
+              </div>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tasks <span class="caret"></span></a>
+              <div class="dropdown-menu dropdown-md last-dropdown">
+
+                <div class="dropdown-task text-muted">
+                  <div class="pull-right text-sm">50%</div>
+                  Google Chrome Extension
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+                      <span class="sr-only">50% Complete</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="dropdown-task text-muted">
+                  <div class="pull-right text-sm">90%</div>
+                  Bootstrap Admin Theme
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
+                      <span class="sr-only">90% Complete</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="dropdown-task text-muted">
+                  <div class="pull-right text-sm">33%</div>
+                  YouTube Client
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%;">
+                      <span class="sr-only">33% Complete</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="dropdown-task text-muted">
+                  <div class="pull-right text-sm">40%</div>
+                  Form Validation
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
+                      <span class="sr-only">40% Complete</span>
+                    </div>
+                  </div>
+                </div>
+
+                <a class="dropdown-menu-footer" href="#">
+                  View all
+                </a>
+
+              </div>
+            </li>
+
+            <li>
+              <a href="#">
+                <img src="assets/img/avatar-500x500.png" alt="Avatar" width="48" height="48" class="avatar img-circle" />
+              </a>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div><!--/.container -->
+    </nav>
+    <div id="content">
+      <header id="page-header">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-8 page-title-wrapper">
+              <h1 class="page-title">Dashboard</h1>
+              <h2 class="page-subtitle">Statistics</h2>
+            </div>
+            <div class="col-sm-4 hidden-xs hidden-sm page-search-wrapper">
+              <input type="text" class="form-control input-lg keyword-search hidden-sm hidden-xs" placeholder="Search for files & reports..">
+            </div>
+          </div>
+        </div>
+      </header>
+      <div id="page-body">
+        <div class="container-fluid">
+          <div id="page-sidebar" class="toggled sidebar">
+            <nav class="sidebar-collapse hidden-xs hidden-sm">
+              <i class="ion ion-ios-arrow-forward show-on-collapsed"></i>
+              <i class="ion ion-ios-arrow-back hide-on-collapsed"></i>
+            </nav>
+
+            <ul class="nav nav-pills nav-stacked" id="sidebar-stacked">
+              <li class="visible-xs visible-sm">
+                <a href="#" class="sidebar-close"><i class="ion ion-ios-arrow-left"></i></a>
+              </li>
+              <li class="active">
+                <a href="/"><i class="ion ion-ios-home"></i> <span class="nav-text">Dashboard</span></a>
+              </li>
+              <li>
+                <a class="nav-container" data-toggle="collapse" data-parent="#sidebar-stacked" href="#p1">
+                  <i class="ion ion-ios-flask"></i> <span class="nav-text">User Interface <span class="badge badge-nav badge-warning">6</span></span>
+                </a>
+                <ul class="nav nav-pills nav-stacked collapse" id="p1">
+                  <li><a href="ui-buttons.html">Buttons</a></li>
+                  <li><a href="ui-grid.html">Grid</a></li>
+                  <li><a href="ui-typography.html">Typography</a></li>
+                  <li><a href="ui-icons.html">Icons</a></li>
+                  <li><a href="ui-images.html">Images</a></li>
+                  <li><a href="ui-components.html">Components</a></li>
+                </ul>
+              </li>            
+            </ul>
+          </div>
+          <div id="page-content">
+            <div class="row">
+              <div class="col-md-9 col-sm-8">
+                <div class="panel panel-default widget">
+                  <div class="panel-heading">
+                    <div class="panel-controls">
+                      <select class="form-control input-sm" style="width:130px; display:inline-block" placeholder="Month">
+                        <option>January</option>
+                        <option>February</option>
+                        <option>March</option>
+                        <option>April</option>
+                        <option selected>May</option>
+                        <option>June</option>
+                        <option>July</option>
+                        <option>August</option>
+                        <option>September</option>
+                        <option>October</option>
+                        <option>November</option>
+                        <option>December</option>
+                      </select>
+                      <select class="form-control input-sm" style="width:130px; display:inline-block" placeholder="">
+                        <option selected>Line Chart</option>
+                        <option>Candle Sticks</option>
+                      </select>
+
+                      <a href="#" class="widget-minify"><i class="fa fa-chevron-up"></i></a>
+                      <a href="#" class="widget-close"><i class="fa fa-times"></i></a>
+                    </div>
+                    <h3 class="panel-title">Recent Movement</h3>
+                  </div>
+                  <div class="panel-body">
+                    <div id="chart-profit" style="height:360px;"></div>
+                  </div>
+                </div>
+              </div><!-- /.col-md-9 -->
+              <div class="col-md-3 col-sm-4">
+                <div class="panel panel-default widget">
+                  <div class="panel-heading">
+                    <div class="panel-controls">
+                      <a href="#" class="widget-minify"><i class="fa fa-chevron-up"></i></a>
+                      <a href="#" class="widget-close"><i class="fa fa-times"></i></a>
+                    </div>
+                    <h3 class="panel-title">Browser Usage</h3>
+                  </div>
+                  <div class="panel-body">
+                    <div id="chart-pie" class="margin-20" style="height: 300px;"></div>
+                    <div class="chart-legend pull-right">
+                      <div class="item">
+                        <div class="color background-success"></div> Chrome
+                      </div>
+                      <div class="item">
+                        <div class="color background-info"></div> Firefox
+                      </div>
+                      <div class="item">
+                        <div class="color background-warning"></div> IE
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- /.col-md-3 -->
+            </div>
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="panel panel-default widget widget-resellers">
+                  <div class="panel-heading">
+                    <div class="panel-controls">
+                      <a href="#" class="widget-minify"><i class="fa fa-chevron-up"></i></a>
+                      <a href="#" class="widget-close"><i class="fa fa-times"></i></a>
+                    </div>
+                    <h3 class="panel-title">Resellers</h3>
+                  </div>
+                  <div class="panel-body">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th style="width:25%;">Company</th>
+                          <th class="text-right" style="width:25%;">Sales</th>
+                        </tr>
+                      </thead>
+                    </table>
+                    <ul class="resellers-slider list-unstyled">
+                      <li>
+                        <table class="table">
+                          <tbody>
+                            <tr>
+                              <td>Harvey C. Lerma</td>
+                              <td style="width:25%;">Cisco</td>
+                              <td style="width:25%;" class="text-right">$ 135,000</td>
+                            </tr>
+                            <tr>
+                              <td>Martin C. Randall</td>
+                              <td>Oracle</td>
+                              <td class="text-right">$ 152,000</td>
+                            </tr>
+                            <tr>
+                              <td>Eric G. Vann</td>
+                              <td>IBM</td>
+                              <td class="text-right">$ 94,000</td>
+                            </tr>
+                            <tr>
+                              <td>Howard K. Haubrich</td>
+                              <td>Capco</td>
+                              <td class="text-right">$ 168,000</td>
+                            </tr>
+                            <tr>
+                              <td>Carlos L. Johnson</td>
+                              <td>EMC</td>
+                              <td class="text-right">$ 82,000</td>
+                            </tr>
+                            <tr>
+                              <td>Stacy R. Lester</td>
+                              <td>Capita</td>
+                              <td class="text-right">$ 110,000</td>
+                            </tr>
+                            <tr>
+                              <td>Shaun M. Henry</td>
+                              <td>Accenture</td>
+                              <td class="text-right">$ 104,000</td>
+                            </tr>
+                            <tr>
+                              <td>James B. Jimenez</td>
+                              <td>Fujitsu</td>
+                              <td class="text-right">$ 121,000</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </li>
+                      <li>
+                        <table class="table">
+                          <tbody>
+                            <tr>
+                              <td>Chang M. Santiago</td>
+                              <td style="width:25%;">Cisco</td>
+                              <td style="width:25%;" class="text-right">$ 135,000</td>
+                            </tr>
+                            <tr>
+                              <td>Alan D. Hebert</td>
+                              <td>IBM</td>
+                              <td class="text-right">$ 92,000</td>
+                            </tr>
+                            <tr>
+                              <td>Christopher M. Erwin</td>
+                              <td>Capita</td>
+                              <td class="text-right">$ 108,000</td>
+                            </tr>
+                            <tr>
+                              <td>Jeremy B. Blevins</td>
+                              <td>Oracle</td>
+                              <td class="text-right">$ 125,000</td>
+                            </tr>
+                            <tr>
+                              <td>Joseph C. Wong</td>
+                              <td>Accenture</td>
+                              <td class="text-right">$ 109,000</td>
+                            </tr>
+                            <tr>
+                              <td>Ismael D. Chatman</td>
+                              <td>Fujitsu</td>
+                              <td class="text-right">$ 117,000</td>
+                            </tr>
+                            <tr>
+                              <td>Daryl S. Boyd</td>
+                              <td>EMC</td>
+                              <td class="text-right">$ 86,000</td>
+                            </tr>
+                            <tr>
+                              <td>Richard S. Crook</td>
+                              <td>Capco</td>
+                              <td class="text-right">$ 154,000</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </li>
+                    </ul>
+
+                  </div>
+                </div>
+              </div><!-- /.col-lg-4 -->
+              <div class="col-lg-8">
+                <div class="panel panel-default widget widget-worldmap">
+                  <div class="panel-heading">
+                    <div class="panel-controls">
+                      <a href="#" class="widget-minify"><i class="fa fa-chevron-up"></i></a>
+                      <a href="#" class="widget-close"><i class="fa fa-times"></i></a>
+                    </div>
+                    <h3 class="panel-title">Worldwide Transactions</h3>
+                  </div>
+                  <div class="panel-body">
+                    <div class="row">
+                      <div class="col-lg-8 col-md-7">
+                        <div id="world-map" style="height:320px"></div>
+                      </div><!-- /.col-lg-8 -->
+                      <div class="col-lg-4 col-md-5">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th>Country</th>
+                              <th class="text-right">Sales</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Brazil</td>
+                              <td class="text-right">$ 123.00</td>
+                            </tr>
+                            <tr>
+                              <td>United Kingdom</td>
+                              <td class="text-right">$ 147.00</td>
+                            </tr>
+                            <tr>
+                              <td>Germany</td>
+                              <td class="text-right">$ 104.00</td>
+                            </tr>
+                            <tr>
+                              <td>France</td>
+                              <td class="text-right">$ 92.00</td>
+                            </tr>
+                            <tr>
+                              <td>Saudi Arabia</td>
+                              <td class="text-right">$ 48.00</td>
+                            </tr>
+                            <tr>
+                              <td>China</td>
+                              <td class="text-right">$ 231.00</td>
+                            </tr>
+                            <tr>
+                              <td>India</td>
+                              <td class="text-right">$ 172.00</td>
+                            </tr>
+                            <tr>
+                              <td>Australia</td>
+                              <td class="text-right">$ 143.00</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div><!-- /.col-lg-4 -->
+                    </div>
+                  </div>
+                </div>
+              </div><!-- /.col-lg-8 -->
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="panel panel-default widget widget-messages">
+                  <div class="panel-heading">
+                    <div class="panel-controls">
+                      <a href="#" class="widget-minify"><i class="fa fa-chevron-up"></i></a>
+                      <a href="#" class="widget-close"><i class="fa fa-times"></i></a>
+                    </div>
+                    <h3 class="panel-title">Messages</h3>
+                  </div>
+                  <div class="panel-body">
+                    <div class="media-items">
+                      <div class="media">
+                        <div class="media-left">
+                          <a href="#">
+                            <img class="media-object img-circle" src="assets/img/avatar-500x500.png" width="48" height="48">
+                          </a>
+                        </div>
+                        <div class="media-body">
+                          <p class="media-heading weight-regular">
+                            Linda Miller
+                            <span class="pull-right text-sm">5m ago</span>
+                          </p>
+                          <span class="text-sm text-muted">Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, quam semper libero..</span>
+                        </div>
+                      </div>
+
+                      <div class="media">
+                        <div class="media-left">
+                          <a href="#">
+                            <img class="media-object img-circle" src="assets/img/avatar-500x500-2.png" width="48" height="48">
+                          </a>
+                        </div>
+                        <div class="media-body">
+                          <p class="media-heading weight-regular">
+                            Kathie Burton
+                            <span class="pull-right text-sm">15m ago</span>
+                          </p>
+                          <span class="text-sm text-muted">Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet..</span>
+                        </div>
+                      </div>
+
+                      <div class="media">
+                        <div class="media-left">
+                          <a href="#">
+                            <img class="media-object img-circle" src="assets/img/avatar-500x500.png" width="48" height="48">
+                          </a>
+                        </div>
+                        <div class="media-body">
+                          <p class="media-heading weight-regular">
+                            Linda Miller
+                            <span class="pull-right text-sm">2h ago</span>
+                          </p>
+                          <span class="text-sm text-muted">Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, quam semper libero..</span>
+                        </div>
+                      </div>
+
+                      <div class="media">
+                        <div class="media-left">
+                          <a href="#">
+                            <img class="media-object img-circle" src="assets/img/avatar-500x500-2.png" width="48" height="48">
+                          </a>
+                        </div>
+                        <div class="media-body">
+                          <p class="media-heading weight-regular">
+                            Kathie Burton
+                            <span class="pull-right text-sm">3h ago</span>
+                          </p>
+                          <span class="text-sm text-muted">Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet..</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- /.col-md-4 -->
+              <div class="col-md-4">
+                <div class="panel panel-default widget widget-todo">
+                  <div class="panel-heading">
+                    <div class="panel-controls">
+                      <a href="#" class="widget-minify"><i class="fa fa-chevron-up"></i></a>
+                      <a href="#" class="widget-close"><i class="fa fa-times"></i></a>
+                    </div>
+                    <h3 class="panel-title">Todo List</h3>
+                  </div>
+                  <div class="panel-body">
+                    <div class="todo">
+                      <ul class="list-unstyled">
+                        <li class="todo-item">
+                          <i class="checkbox fa fa-square-o"></i> <span>Take out the trash</span>
+                        </li>
+                        <li class="todo-item done">
+                          <i class="checkbox fa fa-check-square"></i> <span>Buy milk</span>
+                        </li>
+                        <li class="todo-item">
+                          <i class="checkbox fa fa-square-o"></i> <span>Plan holiday <span class="badge badge-warning text-sm">Important</span></span>
+                        </li>
+                        <li class="todo-item done">
+                          <i class="checkbox fa fa-check-square"></i> <span>Create admin theme</span>
+                        </li>
+                        <li class="todo-item">
+                          <i class="checkbox fa fa-square-o"></i> <span>Buy a new printer</span>
+                        </li>
+                        <li class="todo-item">
+                          <i class="checkbox fa fa-square-o"></i> <span>Workout</span>
+                        </li>
+                        <li class="todo-item">
+                          <i class="checkbox fa fa-square-o"></i> <span>Pick up kids</span>
+                        </li>
+                        <li class="todo-item">
+                          <i class="checkbox fa fa-square-o"></i> <span>Buy Spark</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- /.col-md-4 -->
+              <div class="col-md-4">
+                <div class="panel panel-default widget widget-calendar">
+                  <div class="panel-heading">
+                    <div class="panel-controls">
+                      <a href="#" class="widget-minify"><i class="fa fa-chevron-up"></i></a>
+                      <a href="#" class="widget-close"><i class="fa fa-times"></i></a>
+                    </div>
+                    <h3 class="panel-title">Calendar</h3>
+                  </div>
+                  <div class="panel-body">
+                    <div class="calendar"></div>
+                  </div>
+                </div>
+              </div><!-- /.col-md-4 -->
+            </div>
+
+            <footer id="footer" class="text-center">
+              <p>&copy; 2017 Spark</p>
+              <ul class="list-inline">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Support</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- NPM Packages -->
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/moment.min.js"></script>
+  <script src="/js/datatables.min.js"></script>
+  <script src="/js/md-snackbars.min.js"></script>
+  <script src="js/jquery.mark.min.js"></script>
+  <!-- Theme -->
+  <script src="/js/spark.js"></script>
+  <!-- <script src="/js/dashboard.js"></script> -->
+
+  <script>
+  $(document).ready(function () {
+    Spark.init();
+    //Page.init();
+  });
+
+  </script>
+
+</body>
+</html>
