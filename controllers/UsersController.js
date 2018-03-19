@@ -1,7 +1,8 @@
 import passport from 'passport';
 import mongoose from 'mongoose';
-import exphbs from 'express-handlebars';
 import User from '../models/user';
+import Ticket from '../models/tickets';
+import responseComplain from '../models/responseComplain';
 
 export default class UsersController {
     index(req, res) {
@@ -51,19 +52,27 @@ export default class UsersController {
 }
     logout(req, res) {
         req.logout();
-        res.redirect('login', {message: "Successfully logged out"});
+        //res.redirect('login', {message: "Successfully logged out"});
+        res.status(200).render('login', {message: 'Successful logged out', layout: 'index'});
     }
+    // login(req, res) {
+    //     passport.authenticate('local', {
+    //         successRedirect: '/users/dashboard',
+    //         failureRedirect: '/users/login'
+    //     }), (req, res) => {
+
+    //     };
+    // }
     login(req, res) {
-
-    }
-    auth(req, res) {
-
+        passport.authenticate('local')(req, res, () => {
+            res.redirect('/users/dashboard');
+        })
     }
     enterLogin(req, res) {
         res.render('login', {layout: 'index'});
     }
     enterDashboard(req, res) {
-        res.render('dashboard');
+        res.render('dashboard', {layout: 'dashboard'});
     }
     reset(req, res) {
 
@@ -76,5 +85,31 @@ export default class UsersController {
     }
     forgotPassword(req, res) {
 
+    }
+    tickets(req, res) {
+
+    }
+    submit_ticket(req, res) {
+        if (!req.body.subject || !req.body.complain) {
+            res.render('dashboard', {message: "All fields are required"});
+        }
+        else {
+            let tickets = new Ticket({
+                _id: new mongoose.Types.ObjectId,
+                subject: req.body.subject,
+                date_time: Date.now(),
+            });
+            tickets.save((err) => {
+                if (err) return res.render('dashboard', {err: err, layout: 'dashboard'});
+                let respComp = new responseComplain({
+                    ticket_id: tickets._id,
+                    complain: req.body.complain
+                });
+                respComp.save((err) => {
+                    if (err) return res.render('dashboard', {err: err, layout: 'dashboard'});
+                    return res.render('dashboard', {message: 'Great! Your ticket has been submitted', layout: 'dashboard'});
+                })
+            })
+        }
     }
 }
