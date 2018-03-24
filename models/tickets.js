@@ -1,19 +1,23 @@
 
 import mongoose from 'mongoose';
 import passportLocalMongoose from 'passport-local-mongoose';
+//import dateOnly from 'mongoose-dateonly';
+let dateOnly = require('mongoose-dateonly')(mongoose);
 let responseComplain = require('../models/responseComplain');
-let User = require('../models/user');
-let Ticket = require('../models/tickets');
+//let User = require('../models/user');
+//let Ticket = require('../models/tickets');
 
 const TicketSchema = new mongoose.Schema({
-    user_id: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+    userId: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     //admin: {type: new mongoose.Schema.Types.ObjectId, ref: 'Admin'},
-    subject: {required: true, type: String},
-    date_time: {required: true, type: Date},
-    status: {required: true, type: String, default: 'pending'},
+    subject: {type: String},
+    complain: {type: String},
+    date_time: {type: dateOnly},
+    status: {type: String, default: 'pending'},
+    //responses: {type: mongoose.Schema.Types.ObjectId, ref: 'responseComplain'}
 },
 {
-    timestamps: true
+    autoIndex: false
 });
 
 TicketSchema.plugin(passportLocalMongoose);
