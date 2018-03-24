@@ -5,6 +5,10 @@
   "scripts": {
     "start": "babel-node ./bin/www"
   },
+  "engines": {
+    "node": "8.9.0"
+  },
+
   "dependencies": {
     "babel-preset-env": "^1.6.1",
     "bcrypt-nodejs": "0.0.3",
@@ -24,6 +28,7 @@
     "method-override": "^2.3.10",
     "mongodb": "*",
     "mongoose": "*",
+    "mongoose-dateonly": "^1.0.4",
     "morgan": "~1.9.0",
     "multer": "*",
     "mysql": "^2.15.0",
