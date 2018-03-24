@@ -15,12 +15,14 @@ import passportLocalMongoose from 'passport-local-mongoose';
 import multer from 'multer';
 import mongoose from 'mongoose';
 import flash from 'connect-flash';
-const upload = multer({dest: './uploads'})
-const User = require('./models/user')
-const appRouter = require('./routes/index');
+let upload = multer({dest: './uploads'})
+let User = require('./models/user')
+let appRouter = require('./routes/index');
 import Test from './models/test';
-const configDB = require('./config/database');
-const configPassport = require('./config/passport');
+let configDB = require('./config/database');
+//import passportConfig from './config/passport';
+//const configPassport = require('./config/passport');
+let passportConfig = require('./config/passport');
 
 const app = express();
 
@@ -35,21 +37,34 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 // set view engine to Handlebars
-// app.set('view engine', 'hbs');
-// 
-// app.engine('handlebars', exphbs({defaultLayout: 'main', layoutsDir: 'views/layouts', partialsDir: 'views/layouts'}));
-
-app.engine('.hbs', exphbs({extname: '.hbs'}));
+app.engine('.hbs', exphbs({
+  extname: '.hbs',
+  helpers: {
+    math: function(lvalue, operator, rvalue) {
+      lvalue = parseFloat(lvalue);
+      rvalue = parseFloat(rvalue);
+      return {
+        "+" : lvalue + rvalue,
+        "-": lvalue - rvalue,
+        "*" : lvalue * rvalue,
+        "/" : lvalue / rvalue,
+        "%" : lvalue % rvalue
+      }[operator]
+    }
+  }
+  }));
 app.set('views', path.join(__dirname, 'views')) // this is the folder where we keep our hbs files
 app.set('view engine', '.hbs');
 
-// view engine setup
-// app.set('view engine', 'html');
-// app.set('views', path.join(__dirname, 'views'));
-// app.engine('html', require('express-ejs-extend'));
-
 //serves up the static files in the public folder. Basically where you put your assets (img, js, css)
 app.use(express.static(path.join(__dirname, 'public')));
+
+// parse req variable into hbs templates
+// app.use((req, res, next) => {
+//   res.locals.flashes = req.flash()
+//   res.locals.user = req.user || null
+//   next()
+// });
 
 
 //don't go to any page that does not exist
@@ -57,27 +72,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 //   res.status(404).render('404', {errorCode: 404, error: 'Oops! Sorry we don\'t have that page.'});
 // });
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-// app.use(logger('dev'));
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, 'public')));
-
 
 //configure passport for handling session and authentication
 app.use(session({
   secret: 'This is a secret',
-  resave: false,
-  saveUninitialized: false
 }));
  app.use(passport.initialize());
-// app.use(passport.session()); //persistent login sessions
- app.use(passport.session());
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
-// passport.use(new localStrategy(User.authenticate()));
+ app.use(passport.session()); //persistent login sessions
 
 // app.use(require('connect-flash')());
 // app.use(function (req, res, next) {
@@ -86,9 +87,29 @@ app.use(session({
 // });
 
 //passport configuration
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+// passport.use(new LocalStrategy(User.authenticate()));
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
+
+// passport.use('user-local', new LocalStrategy(
+//   function(username, password, done) {
+//     User.findOne({username: username}, (err, user) => {
+//       if (err) {return done(err)}
+//       if (!user) {
+//         return done (null, false, {message: "Incorrect username"});
+//       }
+//       return  done (null, user);
+//     })
+//   }
+// ));
+// passport.serializeUser((user, done) => {
+//   done(null, user.id);
+// })
+// passport.deserializeUser((id, done) => {
+//   User.findById(id, (err, user) => {
+//     done (err, user);
+//   })
+// })
 
 
 //routing with all callback functions
