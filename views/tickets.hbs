@@ -1,0 +1,74 @@
+    <div class="page home-page">
+      <section class="charts">
+        <div class="container-fluid">
+          <header> 
+            <h1 class="h3">All Tickets</h1>
+          </header>
+          <div class="row">
+            <div class="col-lg-10">
+              <div class="card">
+                <div class="card-header d-flex align-items-center">
+                  <h2 class="h5 display">Basic Table</h2>
+                </div>
+                <div class="card-body">
+                    {{#if err}}
+                    <p>Done here {{err}}</p>
+                    {{else}}
+                    <p>not here bruh</p>
+                    {{/if}}
+                    {{#if message}}
+                    <p>{{message}}</p>
+                    {{/if}}
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Subject</th>
+                        <th>Complains</th>
+                        <th>Date</th>
+                        <th>Response date</th>
+                        <th>Status</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {{#each tickets}}
+                      <tr>
+                        <th class="row">{{ math @index "+" 1}}</th>
+                        <td>{{this.subject}}</td>
+                        <td>{{this.complain}}</td>
+                        <td>{{date_time}}</td>
+                        <td>{{responses}}</td>
+                        <td>{{status}}</td>
+                        <td>
+                            {{#if_equal status "pending"}}
+                                <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                    Actions <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="">Withdraw</a></li>
+                                </ul>
+                            </div>
+                            {{else}}
+                            <div></div>
+                             {{/if_equal}}
+
+                        </td>
+                      </tr>
+                      {{/each}}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      $(document).ready(function(){
+        //$(".row").text(parseInt($(".row").text()) + 1);
+      });
+    </script>

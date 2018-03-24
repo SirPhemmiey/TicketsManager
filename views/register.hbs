@@ -1,18 +1,17 @@
 
-<%- extend('partials/index') %>
-
 <div class="page login-page">
         <div class="container">
           <div class="form-outer text-center d-flex align-items-center">
             <div class="form-inner">
               <div class="logo text-uppercase"><span>Dash</span><strong class="text-primary">Express</strong></div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
-              <form id="register-form" method="post" action="">
+              {{#if message}}
+              <div class="alert alert-info">{{message}}</div>
+              {{/if}}
+              <form id="register-form" method="post" action="/users/register">
                 <div class="form-group">
                         <label for="register-firstname" class="label-custom">First Name</label>
                         <input id="register-firstname" type="text" name="first_name" required>
                         </div>
-                        A combined team of security operatives wednesday prevented members of the Shiite group from their annual procession of Maulud in Katsina State
                 <div class="form-group">
                         <label for="register-lastname" class="label-custom">Last Name</label>
                         <input id="register-lastname" type="text" name="last_name" required>
