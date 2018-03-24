@@ -1,24 +1,22 @@
-// const loginRequired = function(req, res, next) {
-//     if (req.isAuthenticated()) {
-//         return next();
-//     }
-//     else {
-//         res.status(401).render('404', {errorCode:401, error: 'Please login to continue'});
-//     }
-// }
-
-// export default loginRequired;
-
-
 const loginRequired = (req, res, next) => {
     //if user is authenticated in the session, carry on
-    if (req.isAuthenticated()) {
-        return next()
+    // let session = req.session;
+    // let user = req.user;
+    // console.log(session);
+    // console.log(user);
+    // if (session.username || user) {
+    //     return next();
+    // }
+    // else {
+    //         //if they are not
+    // res.status(200).render('login', {message: 'Please login to continue', layout: 'index'});
+    // }
+    if(req.isAuthenticated()){
+        //console.log('authenticaeted')
+        return next();
+    }else{
+        res.status(401).render('login', {errorcode: 401, message: 'Please login again to continue', 'layout': 'index'});
     }
-
-    //if they are not
-    //res.redirect.status(200).('/login', {message: "Please login to continue"});
-    res.status(200).render('login', {message: 'Please login to continue', layout: 'index'});
 }
 
 //export default loginRequired;
