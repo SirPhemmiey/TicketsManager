@@ -16,13 +16,14 @@ import multer from 'multer';
 import mongoose from 'mongoose';
 import flash from 'connect-flash';
 let upload = multer({dest: './uploads'})
-let User = require('./models/user')
+let User = require('./models/user');
+let Admin = require('./models/admin');
 let appRouter = require('./routes/index');
 import Test from './models/test';
 let configDB = require('./config/database');
 //import passportConfig from './config/passport';
 //const configPassport = require('./config/passport');
-let passportConfig = require('./config/passport');
+//let passportConfig = require('./config/passport');
 
 const app = express();
 
@@ -50,6 +51,14 @@ app.engine('.hbs', exphbs({
         "/" : lvalue / rvalue,
         "%" : lvalue % rvalue
       }[operator]
+    },
+    if_equal: function(a, b, options) {
+      if (a == b) {
+        return options.fn(this)
+      }
+      else {
+        return options.inverse(this);
+      }
     }
   }
   }));
@@ -87,29 +96,13 @@ app.use(session({
 // });
 
 //passport configuration
-// passport.use(new LocalStrategy(User.authenticate()));
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
+passport.use('local', new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
-// passport.use('user-local', new LocalStrategy(
-//   function(username, password, done) {
-//     User.findOne({username: username}, (err, user) => {
-//       if (err) {return done(err)}
-//       if (!user) {
-//         return done (null, false, {message: "Incorrect username"});
-//       }
-//       return  done (null, user);
-//     })
-//   }
-// ));
-// passport.serializeUser((user, done) => {
-//   done(null, user.id);
-// })
-// passport.deserializeUser((id, done) => {
-//   User.findById(id, (err, user) => {
-//     done (err, user);
-//   })
-// })
+passport.use('admin-local', new LocalStrategy(Admin.authenticate()));
+passport.serializeUser(Admin.serializeUser());
+passport.deserializeUser(Admin.deserializeUser());
 
 
 //routing with all callback functions
