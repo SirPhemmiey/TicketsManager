@@ -14,9 +14,10 @@ const TicketSchema = new mongoose.Schema({
     complain: {type: String},
     date_time: {type: dateOnly},
     status: {type: String, default: 'pending'},
-    //responses: {type: mongoose.Schema.Types.ObjectId, ref: 'responseComplain'}
+    //responseId: {type: mongoose.Schema.Types.ObjectId}
 },
 {
+    //strict: false,
     autoIndex: false
 });
 

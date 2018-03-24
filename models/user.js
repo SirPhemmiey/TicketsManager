@@ -13,6 +13,9 @@ const UserSchema = new mongoose.Schema({
     first_name: {required: true, type: String},
     last_name: {required: true, type: String}
 });
+// UserSchema.methods.validPassword = (pwd) => {
+//     return (this.password === pwd);
+// }
 //generating the hash
 // UserSchema.methods.generateHash = (password) => {
 //     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
@@ -25,8 +28,8 @@ const UserSchema = new mongoose.Schema({
 //for encryption
 // UserSchema.pre('save', next => {
 //     let user = this;
-//     if (!user.isModified('password'))
-//     return next();
+//     // if (!user.isModified('password'))
+//     // return next();
 
 //     bcrypt.genSalt(SALT_WORK_FACTOR, (err, salt) => {
 //         if (err) return next(err);
@@ -37,6 +40,13 @@ const UserSchema = new mongoose.Schema({
 //         });
 //     });
 // })
+
+// //for comparing
+// UserSchema.methods.comparePassword = (password, cb) => {
+//     bcrypt.compare(password, this.password, (err, isMatch) => {
+//         cb(err, isMatch);
+//     })
+// }
 
 UserSchema.plugin(passportLocalMongoose);
 
