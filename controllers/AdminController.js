@@ -31,7 +31,7 @@ export default class AdminController {
                          }
                 })
                 res.render('admin_dashboard', {
-                    layout: "admin_dashboard", 
+                    layout: "admin_dashboard",
                     username: req.username,
                     pending: pending,
                     closed: closed,
